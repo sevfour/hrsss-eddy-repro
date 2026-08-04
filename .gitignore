@@ -9,6 +9,7 @@
 # 2. Re-include only code + docs that go to GitHub.
 !/.gitignore
 !/README.md
+!/LICENSE
 !/*.py
 
 # 3. Never track caches / checkpoints / OS cruft.
