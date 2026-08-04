@@ -1,0 +1,19 @@
+# --- Allowlist .gitignore ---
+# Ignore everything at the project root by default, then re-include ONLY the
+# code that should be backed up to GitHub. Any data/output/figures dropped in
+# later stay LOCAL unless explicitly un-ignored here. Forgetting fails safe.
+
+# 1. Ignore everything at the project root.
+/*
+
+# 2. Re-include only code + docs that go to GitHub.
+!/.gitignore
+!/README.md
+!/*.py
+
+# 3. Never track caches / checkpoints / OS cruft.
+__pycache__/
+**/__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
