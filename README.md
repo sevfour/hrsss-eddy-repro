@@ -35,5 +35,8 @@ Scripts run in numbered order; each reads/writes intermediate products under
 
 ## Local-only
 
-`data/` (inputs) and `out/` (intermediate products, figures) are gitignored and
-stay local.
+Raw inputs (WOD profiles, eddy atlas) are downloaded into a **shared data root**
+outside the repo — by default `~/Data/WOD` and `~/Data/AVISO_META3.1exp_DT` —
+so they are fetched once and reused across projects. Override the root with the
+`DATA_ROOT` environment variable. `out/` (intermediate products, figures) stays
+in the repo and is gitignored.

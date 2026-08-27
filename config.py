@@ -4,15 +4,19 @@ Fig 2a = surface (10 m) salinity anomaly inside anticyclonic eddies (S'_AE)
 Fig 2b = surface (10 m) salinity anomaly inside cyclonic eddies   (S'_CE)
 on a 2x2 degree global grid, computed as (inside-eddy mean) - (background mean).
 """
+import os
 from pathlib import Path
 
 # ---------------------------------------------------------------- paths
 ROOT = Path(__file__).resolve().parent
-DATA = ROOT / "data"
-WOD_DIR = DATA / "wod"
-EDDY_DIR = DATA / "eddies"
-OUT = ROOT / "out"
-for d in (DATA, WOD_DIR, EDDY_DIR, OUT):
+# Raw downloads (WOD profiles, eddy atlas) live in a shared data root outside the
+# repo so they are downloaded once and reused across projects. Defaults to
+# ~/Data; override with the DATA_ROOT environment variable.
+DATA_ROOT = Path(os.environ.get("DATA_ROOT", Path.home() / "Data"))
+WOD_DIR = DATA_ROOT / "WOD"                     # NOAA World Ocean Database profiles
+EDDY_DIR = DATA_ROOT / "AVISO_META3.1exp_DT"    # AVISO/CNES mesoscale eddy atlas
+OUT = ROOT / "out"                              # derived products stay in the repo
+for d in (WOD_DIR, EDDY_DIR, OUT):
     d.mkdir(parents=True, exist_ok=True)
 
 # intermediate products
